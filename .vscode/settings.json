@@ -1,0 +1,10 @@
+{
+    "license.year": "auto",
+    "license.extension": ".md",
+    "license.author": "Nicolò Rinaldi",
+    "files.associations": {
+        "getopt.h": "c",
+        "unistd.h": "c",
+        "fsp.h": "c"
+    }
+}

@@ -109,7 +109,7 @@ struct Split_Options *parse_arguments(int argc, char **argv) {
             case 'b':
                 options->block_size = parse_block_size(optarg, strlen(optarg));
                 
-                if (options->block_size < 0) {
+                if (options->block_size == 0) {
                     fputs("Invalid block size", stderr);
                     exit(EXIT_FAILURE);
                 }

@@ -55,9 +55,24 @@ struct Split_Options
 };
 
 
+struct Join_Options
+{
+    char        *dirname;
+    char        *output;
+    bool        compress;
+};
+
+
+struct Options {
+    struct Split_Options    *split_options;
+    struct Join_Options     *join_options;
+};
+
+
 struct Block
 {
     size_t      block_size;
+    size_t      original_size;
     bool        compression;
     void        *data;
 };
@@ -65,10 +80,14 @@ struct Block
 
 void help_menu();
 size_t parse_block_size(char *size, size_t len);
-struct Split_Options *parse_arguments(int argc, char **argv);
+struct Options *parse_arguments(int argc, char **argv);
 void split_file(struct Split_Options *options);
+void join_files(struct Join_Options *options);
 void check_directory(char *dirname);
 struct Block *compress_data(char *data, size_t len);
+struct Block *decompress_data(struct Block *data);
 void write_block(struct Block *block, int fd);
+struct Block *read_block(int fd);
+bool endswith(char *str, char *key);
 
 #endif
